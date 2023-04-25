@@ -4,8 +4,13 @@
 /* pass interpolated variables to from the vertex */
 varying vec2 v_uv;
 
+uniform sampler2D tex;
+
 void main()
 {
-    gl_FragColor = vec4(.5, .5, 0 , 1.);
+
+    vec4 rope = texture(tex, v_uv);
+
+    gl_FragColor = vec4(rope);
 }
 

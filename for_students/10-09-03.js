@@ -13,15 +13,37 @@ import { shaderMaterial } from "../libs/CS559-Framework/shaderHelper.js";
 
   let world = new GrWorld({ width: mydiv ? 600 : 800, where: mydiv });
 
+  let texture = new T.TextureLoader().load("textures/rope.jpg");
+
   let shaderMat = shaderMaterial("./shaders/10-09-03.vs", "./shaders/10-09-03.fs", {
     side: T.DoubleSide,
-    uniforms: {},
+    uniforms: {
+      tex: {value: texture}
+    },
   });
 
-  world.add(new SimpleObjects.GrSphere({ x: -2, y: 1, material: shaderMat }));
+  let s_seg = new InputHelpers.LabelSlider("segs", {
+    width: 400,
+    min: 4,
+    max: 32,
+    step: 1,
+    initial: 8,
+    where: mydiv,
+  });
+
+  let sphere = new SimpleObjects.GrSphere({ x: -2, y: 1, material: shaderMat });
+
+  world.add(sphere);
   world.add(
     new SimpleObjects.GrSquareSign({ x: 2, y: 1, size: 1, material: shaderMat })
   );
 
   world.go();
+
+  function onchangecomplexity() {
+    let m = s_seg.value();
+    sphere.setSegmentation(m,m-2);
+  }
+  s_seg.oninput = onchangecomplexity;
+  onchangecomplexity();
 }

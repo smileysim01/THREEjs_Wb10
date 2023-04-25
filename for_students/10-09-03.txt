@@ -1,3 +1,4 @@
 Explain what your shader does and how it works.
 
-
+My shader represents a rope ball and a wall texture of rope type.
+The slider changes the number of segments of the ball.

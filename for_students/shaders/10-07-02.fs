@@ -11,10 +11,28 @@ uniform vec3 dark;
 /* number of checks over the UV range */
 uniform float checks;
 
+uniform float blur;
+
 void main()
 {
-    float dc = .5;
+    float x = v_uv.x * checks;
+    float y = v_uv.y * checks;
 
-    gl_FragColor = vec4(mix(light,dark,dc), 1.);
+    float xc = floor(x);
+    float yc = floor(y);
+
+    float d = .5;
+
+    float dx = x-xc-d;
+    float dy = y-yc-d;
+
+    float m = max(dx,dy);
+
+    float a = fwidth(d);
+    
+    float dc = 1.0 - (smoothstep(d-a, d+a, d));
+
+    gl_FragColor = vec4(mod(xc+yc,2.0)!=1.0 ? mix(light,dark,dc):mix(dark,light,dc), 1.);
 }
+
 

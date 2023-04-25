@@ -19,6 +19,7 @@ import { shaderMaterial } from "../libs/CS559-Framework/shaderHelper.js";
       checks: { value: 4.0 },
       light: { value: new T.Vector3(1, 1, 1) },
       dark: { value: new T.Vector3(0.2, 0.2, 0.7) },
+      blur: { value: -1 }
     },
   });
 

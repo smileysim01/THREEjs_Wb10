@@ -12,10 +12,16 @@ import { shaderMaterial } from "../libs/CS559-Framework/shaderHelper.js";
   let mydiv = document.getElementById("div1");
 
   let world = new GrWorld({ width: mydiv ? 600 : 800, where: mydiv });
+
+  let earth_texture = new T.TextureLoader().load("textures/earth.jpg");
+  let space_texture = new T.TextureLoader().load("textures/space.jpg");
   
   let shaderMat = shaderMaterial("./shaders/10-09-02.vs", "./shaders/10-09-02.fs", {
     side: T.DoubleSide,
-    uniforms: {},
+    uniforms: {
+      earth_tex: {value: earth_texture},
+      space_map: {value: space_texture}
+    },
   });
 
   world.add(new SimpleObjects.GrSphere({ x: -2, y: 1, material: shaderMat }));

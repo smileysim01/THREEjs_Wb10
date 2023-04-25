@@ -1,8 +1,16 @@
 Where did you get your shader? Describe the source and include a link.
+I got my shader from GLSL Sandbox link provided in the workbook.
+I played around with the equations used to get a perfect result as per the objects.
 
-
+https://glslsandbox.com/e#102713.0
 
 
 In your own words, describe how this shader works. (3-5 sentences)
+
+This is shader uses two uniforms - time and resolution.
+Time has been applied using step function in .js file and in fragment shader file using sin functions.
+For resolution, I have used value (800,800) in vec2 in .js file.
+
+
 
 

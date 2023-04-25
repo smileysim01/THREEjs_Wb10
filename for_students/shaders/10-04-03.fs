@@ -28,6 +28,8 @@ void main()
     vec3 reflDir = reflect(-lightDir,normal);
     float alignment = max(dot(viewDir,reflDir),0.);
     // specular highlight color
-    vec3 specular = baseColor * pow(alignment,pow(2.,shininess));
-    gl_FragColor = vec4(specular, 1);
+    vec3 specular = vec3(1,1,1) * pow(alignment,pow(2.,shininess));
+
+    vec3 dlight = baseColor * dot(normal,lightDir);
+    gl_FragColor = vec4(clamp(dlight + specular, 0.0,1.0), 1);
 }

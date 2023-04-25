@@ -13,7 +13,18 @@ uniform float checks;
 
 void main()
 {
-    float dc = .5;
+    float x = v_uv.x * checks;
+    float y = v_uv.y * checks;
+
+    float xc = floor(x);
+    float yc = floor(y);
+
+    float d = .5;
+
+    float dx = x-xc-d;
+    float dy = y-yc-d;
+
+    float dc = step(mod(xc + yc, 2.0), 0.0);
 
     gl_FragColor = vec4(mix(light,dark,dc), 1.);
 }

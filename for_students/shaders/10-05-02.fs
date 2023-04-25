@@ -27,6 +27,11 @@ void main()
     float d = sqrt(dx*dx + dy*dy);
     float dc = step(d,radius);
 
-    gl_FragColor = vec4(mix(light,dark,dc), 1.);
+    vec3 color;
+    
+    if(mod(xc+yc,2.0)==0.0)  color = dark;
+    else    color = vec3(0,1,0);
+
+    gl_FragColor = vec4(mix(light,color,dc), 1.);
 }
 

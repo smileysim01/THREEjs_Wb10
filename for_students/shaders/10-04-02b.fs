@@ -8,7 +8,7 @@
 varying vec3 l_normal;
 
 // note that this is in WORLD COORDINATES
-const vec3 lightDirWorld = vec3(0,1,0);
+const vec3 lightDirWorld = vec3(0,0,1);
 const vec3 baseColor = vec3(1,.8,.4);
 
 void main()
@@ -21,7 +21,7 @@ void main()
     vec3 lightDir = normalize(vec4(lightDirWorld, 0)).xyz;
 
     // deal with two sided lighting
-    float light = abs(dot(nhat, lightDir));
+    float light = dot(nhat, lightDir);
 
     // brighten the base color
     gl_FragColor = vec4(light * baseColor,1);

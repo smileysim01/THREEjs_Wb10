@@ -1,2 +1,5 @@
 Answer the question.
 
+As we move the slider from 0-2, the white light gets more and more concentrated near a particular point.
+At the same time, the base light becomes more prominent.
+As the two lights seem to work synchronously in a vice versa pattern, my code seems to be combining the 2 correctly.

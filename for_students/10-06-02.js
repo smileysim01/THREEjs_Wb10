@@ -15,8 +15,27 @@ import { shaderMaterial } from "../libs/CS559-Framework/shaderHelper.js";
   
   let shaderMat = shaderMaterial("./shaders/10-06-02.vs", "./shaders/10-06-02.fs", {
     side: T.DoubleSide,
-    uniforms: {},
+    uniforms: {
+      bricks: { value: 4.0 },
+      light: { value: new T.Vector3(0.707, 0.394, 0.113) },
+      dark: { value: new T.Vector3(0.539, 0.2, 0.14) },
+    },
   });
+
+  let s1 = new InputHelpers.LabelSlider("bricks", {
+    width: 400,
+    min: 1,
+    max: 20,
+    step: 0.5,
+    initial: 4,
+    where: mydiv,
+  });
+
+  function onchange() {
+    shaderMat.uniforms.bricks.value = s1.value();
+  }
+  s1.oninput = onchange;
+  onchange();
 
   world.add(new SimpleObjects.GrSphere({ x: -2, y: 1, material: shaderMat }));
   world.add(

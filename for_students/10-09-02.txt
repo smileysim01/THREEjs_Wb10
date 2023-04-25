@@ -1,13 +1,17 @@
 Where did the image come from? 
 
-
+Pinterest:
+https://in.pinterest.com/pin/1548181134819922/
+https://in.pinterest.com/pin/552253973027790414/
 
 
 What lighting did you implement?
 
-
+Diffuse directional light from z axis which changes as the camera moves.
 
 
 Did you do anything beyond basic texure with diffuse lighting (explain)?
 
-
+Yes. I have implemented a mix of two textures. 
+First is the texture of earth. 
+Second, the earth is visible as we are seeing it from space. This is because I have added a space texture with the earth texture.

@@ -1,3 +1,7 @@
-1.
+1.Vertex Shader:
+Inputs: The attributes of that vertex(like the screen-position of the 3D vertex) and uniforms.
+Outputs: Screen position of transformed vertex(atleast in 2D), and can also output varying variables.
 
-2.
+2.Fragment Shader:
+Inputs: Properties of the fragment like screen position, interpolated varying variables from vertices and uniform variables.
+Outputs: More properties of the fragment like color of the fragment on screen

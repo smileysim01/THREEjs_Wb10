@@ -15,7 +15,12 @@ import { shaderMaterial } from "../libs/CS559-Framework/shaderHelper.js";
 
   let shaderMat = shaderMaterial("./shaders/10-09-01.vs", "./shaders/10-09-01.fs", {
     side: T.DoubleSide,
-    uniforms: {},
+    uniforms: {
+      radius: { value: 0.3 },
+      dots: { value: 4.0 },
+      light: { value: new T.Vector3(1, 1, 1) },
+      dark: { value: new T.Vector3(0.2, 0.2, 0.7) },
+    },
   });
 
   world.add(new SimpleObjects.GrSphere({ x: -2, y: 1, material: shaderMat }));

@@ -1,2 +1,4 @@
 Explain how your shader works. If your shader is based on some example, cite your source (with a link).
 
+My shader is based on the checkerboard.
+The design shows rectangles in a diagonal pattern, suitable as a wallpaper design.
