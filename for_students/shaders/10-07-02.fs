@@ -23,16 +23,17 @@ void main()
 
     float d = .5;
 
-    float dx = x-xc-d;
-    float dy = y-yc-d;
+    float dx = abs(d-fract(x));
+    float dy = abs(d-fract(y));
+
+    vec3 fl,n_fl;
+    mod(xc+yc,2.)!=1. ? fl=light, n_fl=dark : fl=dark, n_fl=light;
 
     float m = max(dx,dy);
 
-    float a = fwidth(d);
+    float a = fwidth(m);
     
-    float dc = 1.0 - (smoothstep(d-a, d+a, d));
+    float dc = smoothstep(d-a, d,m)/2.;
 
-    gl_FragColor = vec4(mod(xc+yc,2.0)!=1.0 ? mix(light,dark,dc):mix(dark,light,dc), 1.);
+    gl_FragColor = vec4(mix(fl, n_fl, dc), 1.);
 }
-
-

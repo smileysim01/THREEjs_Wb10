@@ -15,6 +15,20 @@ import { shaderMaterial } from "../libs/CS559-Framework/shaderHelper.js";
 
   let earth_texture = new T.TextureLoader().load("textures/earth.jpg");
   let space_texture = new T.TextureLoader().load("textures/space.jpg");
+
+  /**
+   *
+   * @param {GrObject} obj
+   * @param {number} [speed=0.5] - rotations per second
+   */
+ function spinY(obj, speed = 0.5) {
+   obj.stepWorld = function (delta, timeOfDay) {
+     obj.objects.forEach((obj) =>
+       obj.rotateY(((speed * delta) / 1000) * Math.PI)
+     );
+   };
+   return obj;
+ }
   
   let shaderMat = shaderMaterial("./shaders/10-09-02.vs", "./shaders/10-09-02.fs", {
     side: T.DoubleSide,
@@ -23,6 +37,18 @@ import { shaderMaterial } from "../libs/CS559-Framework/shaderHelper.js";
       space_map: {value: space_texture}
     },
   });
+
+  world.add(
+    spinY(
+      new SimpleObjects.GrSphere({
+        x: -2,
+        y: 1,
+        widthSegments: 100,
+        heightSegments: 100,
+        material: shaderMat,
+      })
+    )
+  );
 
   world.add(new SimpleObjects.GrSphere({ x: -2, y: 1, material: shaderMat }));
   world.add(

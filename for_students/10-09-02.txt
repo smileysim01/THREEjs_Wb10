@@ -15,3 +15,4 @@ Did you do anything beyond basic texure with diffuse lighting (explain)?
 Yes. I have implemented a mix of two textures. 
 First is the texture of earth. 
 Second, the earth is visible as we are seeing it from space. This is because I have added a space texture with the earth texture.
+The earth also spins on its axis.
